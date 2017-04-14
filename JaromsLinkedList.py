@@ -31,6 +31,7 @@ class LinkedList:
                     i_next = self.previous.index(i_now)
                 except ValueError:
                     pass
+            # if it's the last iteration, save
             if i is 0:
                 if index is 0:
                     self.previous.append(None)
@@ -46,18 +47,30 @@ class LinkedList:
             self.next.append(i_next)
             self.previous[i_next] = i_new
 
-        def delete(self, index):
-            return None
+    def delete(self, index):
+        i_new = len(self.next)
+        index = max(0, min(index, i_new))
+        i_next = self.previous.index(None)
+        i_now = i_next
+        i = index - 1
+        while i >= 0:
+            if i is not index:
+                i_now = i_next
+                try:
+                    # find where we're going next by searching our 'previous' for the current i_now index
+                    i_next = self.previous.index(i_now)
+                except ValueError:
+                    pass
 
-        def __str__(self):
-            to_return = ""
-            to_return += "\nNext\n"
-            to_return += str(self.next)
-            to_return += "\nPrevious\n"
-            to_return += str(self.previous)
-            to_return += "\nValue\n"
-            to_return += str(self.value)
-            return str(to_return)
+    def __str__(self):
+        to_return = ""
+        to_return += "\nNext\n"
+        to_return += str(self.next)
+        to_return += "\nPrevious\n"
+        to_return += str(self.previous)
+        to_return += "\nValue\n"
+        to_return += str(self.value)
+        return to_return
 
 array = [0, 1, 2, 3, 4, 5]
 
