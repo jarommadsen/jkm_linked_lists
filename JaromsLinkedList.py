@@ -86,6 +86,49 @@ class LinkedList:
             i_prev = i_now
             i_now = i_next
             i -= 1
+    def f_print(self):
+        to_return = ""
+        to_return += "Locate\t"
+        to_return += "Next\t"
+        to_return += "Prev\t"
+        to_return += "Value\t\n"
+        i = 4
+        while i:
+            to_return += "-------\t"
+            i -= 1
+        to_return += "\n"
+        i = self.previous.index(None)
+        while True:
+            to_return += str(self.location[i]) + "\t"
+            to_return += str(self.next[i]) + "\t"
+            to_return += str(self.previous[i]) + "\t"
+            to_return += str(self.value[i]) + "\t\n"
+            if self.next[i] is None:
+                break
+            i = self.location.index(self.next[i])
+        print(to_return)
+
+    def b_print(self):
+        to_return = ""
+        to_return += "Locate\t"
+        to_return += "Next\t"
+        to_return += "Prev\t"
+        to_return += "Value\t\n"
+        i = 4
+        while i:
+            to_return += "-------\t"
+            i -= 1
+        to_return += "\n"
+        i = self.next.index(None)
+        while True:
+            to_return += str(self.location[i]) + "\t"
+            to_return += str(self.next[i]) + "\t"
+            to_return += str(self.previous[i]) + "\t"
+            to_return += str(self.value[i]) + "\t\n"
+            if self.previous[i] is None:
+                break
+            i = self.location.index(self.previous[i])
+        print(to_return)
 
     def __str__(self):
         to_return = ""
@@ -139,13 +182,16 @@ print(l)
 l.insert(4, "Hamburgers")
 print("\n\n\n")
 print(l)
-l.delete(0)
-print(l)
-l.delete(0)
-print(l)
-l.delete(0)
-print(l)
-l.delete(3)
-print(l)
-l.delete(3)
-print(l)
+l.f_print()
+l.b_print()
+# print(l)
+# l.delete(0)
+# print(l)
+# l.delete(0)
+# print(l)
+# l.delete(0)
+# print(l)
+# l.delete(3)
+# print(l)
+# l.delete(3)
+# print(l)
