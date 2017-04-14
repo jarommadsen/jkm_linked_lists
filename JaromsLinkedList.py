@@ -28,18 +28,18 @@ class LinkedList:
             return 0
         index = max(0, min(index, i_new))
         i_next = self.previous.index(None)
-        i_now = i_next
+        i_prev = i_next
         i = index
         while i >= 0:
-            # we skip the first iteration to have i_now one place behind
+            # we skip the first iteration to have i_prev one place behind
             # 'index' and i_next on top of 'index'
             # We don't just set i = index - 1 because we still want to be able
             # to set index = 0 and not have it be -1
             if i is not index:
-                i_now = i_next
+                i_prev = i_next
                 try:
-                    # find where we're going next by searching our 'previous' for the current i_now index
-                    i_next = self.previous.index(i_now)
+                    # find where we're going next by searching our 'previous' for the current i_prev index
+                    i_next = self.previous.index(i_prev)
                 except ValueError:
                     pass
             # if it's the last iteration, change previous value
@@ -48,8 +48,8 @@ class LinkedList:
                     self.previous.append(None)
                 else:
                     # The previous value whose next value points to new value
-                    self.previous.append(i_now)
-                    self.next[i_now] = i_new
+                    self.previous.append(i_prev)
+                    self.next[i_prev] = i_new
             i -= 1
         if index is i_new:
             self.next.append(None)
