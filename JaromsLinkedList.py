@@ -69,8 +69,7 @@ class LinkedList:
         i_now = i_next
         i_prev = i_now
         # similar process to insert but we need the spot behind and in front
-        # of our target index. We also give it an extra interation to set i_next
-        # to start ahead
+        # of our target index.
         i = index
         while i >= 0:
             # find where we're going next by searching our 'previous' for the current i_now index
