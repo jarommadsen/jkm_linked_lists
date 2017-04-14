@@ -60,11 +60,7 @@ class LinkedList:
 
     def delete(self, index):
         size = len(self.next) - 1
-        print('Size:')
-        print(size)
         index = max(0, min(index, size))
-        print("Index:")
-        print(index)
         i_next = self.location[self.previous.index(None)]
         i_now = i_next
         i_prev = i_now
@@ -76,13 +72,8 @@ class LinkedList:
             i_next = self.next[self.location.index(i_now)]
             if i_next is None:
                 i_next = i_now
-            print("-----")
-            print(i_prev)
-            print(i_now)
-            print(i_next)
             # The last iteration we do our logic
             if i is 0:
-                print("LOGIC")
                 # Set previous index's 'next' to target's 'next'
                 self.next[self.location.index(i_prev)] = self.next[self.location.index(i_now)]
                 # Set next index's 'previous' to target's 'previous'
@@ -98,14 +89,22 @@ class LinkedList:
 
     def __str__(self):
         to_return = ""
-        to_return += "\nLocation\n"
-        to_return += str(self.location)
-        to_return += "\nNext\n"
-        to_return += str(self.next)
-        to_return += "\nPrevious\n"
-        to_return += str(self.previous)
-        to_return += "\nValue\n"
-        to_return += str(self.value)
+        to_return += "Locate\t"
+        to_return += "Next\t"
+        to_return += "Prev\t"
+        to_return += "Value\t\n"
+        i = 4
+        while i:
+            to_return += "-------\t"
+            i -= 1
+        to_return += "\n"
+        i = 0
+        while i < len(self.location):
+            to_return += str(self.location[i]) + "\t"
+            to_return += str(self.next[i]) + "\t"
+            to_return += str(self.previous[i]) + "\t"
+            to_return += str(self.value[i]) + "\t\n"
+            i += 1
         return to_return
 
 array = ["Dog", "Cat", "Mouse", "Your mom", "TRex", "Will"]
